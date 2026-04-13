@@ -8,7 +8,7 @@ export default function Footer() {
               tmpl<span className="text-primary">.</span>
             </span>
             <span className="hidden md:inline-flex items-center gap-2 text-xs text-muted-foreground border border-border rounded-full px-3 py-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block" />
+              <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block" />
               Security & Confidentiality
             </span>
           </div>
