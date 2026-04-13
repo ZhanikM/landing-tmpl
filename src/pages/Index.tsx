@@ -1,3 +1,5 @@
+import SmoothScroll from '@/components/SmoothScroll';
+import LoadingScreen from '@/components/LoadingScreen';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import TrustStrip from '@/components/TrustStrip';
@@ -12,19 +14,22 @@ import Footer from '@/components/Footer';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Header />
-      <HeroSection />
-      <TrustStrip />
-      <ServicesSection />
-      <CasesSection />
-      <ProcessSection />
-      <TechStackSection />
-      <EngagementSection />
-      <FAQSection />
-      <CTASection />
-      <Footer />
-    </div>
+    <SmoothScroll>
+      <LoadingScreen />
+      <div className="min-h-screen bg-background text-foreground">
+        <Header />
+        <HeroSection />
+        <TrustStrip />
+        <ServicesSection />
+        <CasesSection />
+        <ProcessSection />
+        <TechStackSection />
+        <EngagementSection />
+        <FAQSection />
+        <CTASection />
+        <Footer />
+      </div>
+    </SmoothScroll>
   );
 };
 

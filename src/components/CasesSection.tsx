@@ -1,4 +1,6 @@
 import AnimatedSection from './AnimatedSection';
+import TiltCard from './TiltCard';
+import SplitText from './SplitText';
 
 const cases = [
   {
@@ -40,32 +42,36 @@ export default function CasesSection() {
       <div className="container mx-auto px-6">
         <AnimatedSection>
           <p className="text-sm font-medium tracking-widest uppercase text-accent mb-4">Selected Cases</p>
-          <h2 className="font-heading text-3xl md:text-5xl font-bold mb-16">Results That Speak</h2>
+          <h2 className="font-heading text-3xl md:text-5xl font-bold mb-16">
+            <SplitText>Results That Speak</SplitText>
+          </h2>
         </AnimatedSection>
 
         <div className="space-y-8">
           {cases.map((c, i) => (
             <AnimatedSection key={c.title} delay={i * 0.1}>
-              <div className="bg-card-gradient rounded-xl p-8 md:p-10">
-                <div className="flex flex-col md:flex-row md:items-start gap-8">
-                  <div className="flex-1">
-                    <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary mb-4">
-                      {c.tag}
-                    </span>
-                    <h3 className="font-heading text-2xl font-semibold mb-3">{c.title}</h3>
-                    <p className="text-muted-foreground text-sm mb-2"><strong className="text-foreground/80">Goal:</strong> {c.goal}</p>
-                    <p className="text-muted-foreground text-sm"><strong className="text-foreground/80">Solution:</strong> {c.solution}</p>
-                  </div>
-                  <div className="flex gap-6 md:gap-8 flex-wrap">
-                    {c.results.map((r) => (
-                      <div key={r.label} className="text-center md:text-right">
-                        <p className="font-heading text-3xl font-bold text-gradient">{r.value}</p>
-                        <p className="text-xs text-muted-foreground mt-1">{r.label}</p>
-                      </div>
-                    ))}
+              <TiltCard>
+                <div className="bg-card-gradient rounded-xl p-8 md:p-10">
+                  <div className="flex flex-col md:flex-row md:items-start gap-8">
+                    <div className="flex-1">
+                      <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary mb-4">
+                        {c.tag}
+                      </span>
+                      <h3 className="font-heading text-2xl font-semibold mb-3">{c.title}</h3>
+                      <p className="text-muted-foreground text-sm mb-2"><strong className="text-foreground/80">Goal:</strong> {c.goal}</p>
+                      <p className="text-muted-foreground text-sm"><strong className="text-foreground/80">Solution:</strong> {c.solution}</p>
+                    </div>
+                    <div className="flex gap-6 md:gap-8 flex-wrap">
+                      {c.results.map((r) => (
+                        <div key={r.label} className="text-center md:text-right">
+                          <p className="font-heading text-3xl font-bold text-gradient">{r.value}</p>
+                          <p className="text-xs text-muted-foreground mt-1">{r.label}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </TiltCard>
             </AnimatedSection>
           ))}
         </div>
