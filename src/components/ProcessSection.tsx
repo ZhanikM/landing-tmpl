@@ -1,4 +1,7 @@
 import AnimatedSection from './AnimatedSection';
+import SplitText from './SplitText';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
 const steps = [
   { num: '01', title: 'Discover', desc: 'Deep-dive into your business, constraints, and goals.' },
@@ -9,17 +12,34 @@ const steps = [
 ];
 
 export default function ProcessSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+  const lineWidth = useTransform(scrollYProgress, [0.1, 0.6], ['0%', '100%']);
+
   return (
-    <section id="process" className="py-24 md:py-32">
+    <section id="process" className="py-24 md:py-32" ref={sectionRef}>
       <div className="container mx-auto px-6">
         <AnimatedSection>
           <p className="text-sm font-medium tracking-widest uppercase text-accent mb-4">How We Work</p>
-          <h2 className="font-heading text-3xl md:text-5xl font-bold mb-16">Our Process</h2>
+          <h2 className="font-heading text-3xl md:text-5xl font-bold mb-16">
+            <SplitText>Our Process</SplitText>
+          </h2>
         </AnimatedSection>
 
         <div className="relative">
-          {/* Connection line */}
-          <div className="hidden md:block absolute top-8 left-0 right-0 glow-line" />
+          {/* Animated connection line */}
+          <div className="hidden md:block absolute top-8 left-0 right-0 h-[1px] bg-border" />
+          <motion.div
+            className="hidden md:block absolute top-8 left-0 h-[1px]"
+            style={{
+              width: lineWidth,
+              background: 'linear-gradient(90deg, hsl(224 100% 56% / 0.8), hsl(220 100% 77% / 0.5))',
+              boxShadow: '0 0 12px hsl(224 100% 56% / 0.4)',
+            }}
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
             {steps.map((s, i) => (
