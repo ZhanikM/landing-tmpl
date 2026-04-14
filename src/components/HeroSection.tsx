@@ -19,7 +19,7 @@ export default function HeroSection() {
         <HeroScene />
       </motion.div>
       <motion.div
-        className="relative z-10 container mx-auto px-6 text-center max-w-4xl"
+        className="relative z-10 container mx-auto px-6 text-center max-w-4xl select-none pointer-events-none"
         style={{ y: yText, opacity }}
       >
         <motion.p
@@ -52,7 +52,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.9, type: 'spring', stiffness: 100, damping: 20 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col sm:flex-row gap-4 justify-center pointer-events-auto"
         >
           <MagneticButton
             href="https://t.me/"
