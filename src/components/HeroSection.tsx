@@ -19,7 +19,7 @@ export default function HeroSection() {
         <HeroScene />
       </motion.div>
       <motion.div
-        className="relative z-10 container mx-auto px-6 text-center max-w-4xl"
+        className="relative z-10 container mx-auto px-6 text-center max-w-4xl select-none pointer-events-none"
         style={{ y: yText, opacity }}
       >
         <motion.p
