@@ -1,8 +1,34 @@
+import { ExternalLink } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
 import TiltCard from './TiltCard';
 import SplitText from './SplitText';
 
-const cases = [
+type CaseItem = {
+  tag: string;
+  title: string;
+  summary?: string;
+  goal: string;
+  solution: string;
+  results: { value: string; label: string }[];
+  link?: { href: string; label: string };
+};
+
+const cases: CaseItem[] = [
+  {
+    tag: 'Career Tech',
+    title: 'ProfWise — Career Guidance Platform',
+    summary:
+      'A guided digital experience that helps users move from uncertainty to a clear career direction through structured diagnostics.',
+    goal: 'Users struggle to choose a career path without structured diagnostics or trustworthy recommendations.',
+    solution:
+      'Multi-step user journey with career tests, personalized recommendations, a profession catalog, and a fully responsive UX.',
+    results: [
+      { value: 'Test → Path', label: 'Clear decision flow' },
+      { value: '100%', label: 'Responsive UX' },
+      { value: 'Catalog', label: 'Profession library' },
+    ],
+    link: { href: 'https://profwise.kz/ru', label: 'Visit live site' },
+  },
   {
     tag: 'Fintech',
     title: 'AI Support Assistant',
@@ -58,8 +84,26 @@ export default function CasesSection() {
                         {c.tag}
                       </span>
                       <h3 className="font-heading text-2xl font-semibold mb-3">{c.title}</h3>
-                      <p className="text-muted-foreground text-sm mb-2"><strong className="text-foreground/80">Goal:</strong> {c.goal}</p>
-                      <p className="text-muted-foreground text-sm"><strong className="text-foreground/80">Solution:</strong> {c.solution}</p>
+                      {c.summary && (
+                        <p className="text-foreground/80 text-sm mb-4">{c.summary}</p>
+                      )}
+                      <p className="text-muted-foreground text-sm mb-2">
+                        <strong className="text-foreground/80">Goal:</strong> {c.goal}
+                      </p>
+                      <p className="text-muted-foreground text-sm">
+                        <strong className="text-foreground/80">Implementation:</strong> {c.solution}
+                      </p>
+                      {c.link && (
+                        <a
+                          href={c.link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 mt-5 text-sm font-medium text-primary hover:text-accent transition-colors"
+                        >
+                          {c.link.label}
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
+                      )}
                     </div>
                     <div className="flex gap-6 md:gap-8 flex-wrap">
                       {c.results.map((r) => (
