@@ -1,6 +1,6 @@
 import { useRef, useMemo, Suspense } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Sphere, MeshDistortMaterial, Float, Stars } from '@react-three/drei';
+import { Sphere, MeshDistortMaterial, Float } from '@react-three/drei';
 import * as THREE from 'three';
 
 function NetworkSphere() {
@@ -51,7 +51,7 @@ function NetworkSphere() {
 
 function ParticleRing() {
   const ref = useRef<THREE.Points>(null);
-  const count = 600;
+  const count = 300;
 
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
@@ -105,7 +105,6 @@ export default function HeroScene() {
           <pointLight position={[-5, -5, -5]} intensity={0.3} color="#1E5EFF" />
           <NetworkSphere />
           <ParticleRing />
-          <Stars radius={50} depth={50} count={1000} factor={2} saturation={0} fade speed={1} />
         </Suspense>
       </Canvas>
     </div>
