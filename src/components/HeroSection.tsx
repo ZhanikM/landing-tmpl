@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import HeroScene from './HeroScene';
+import InteractiveDataViz from './InteractiveDataViz';
 import MagneticButton from './MagneticButton';
 
 export default function HeroSection() {
@@ -17,6 +18,7 @@ export default function HeroSection() {
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <motion.div className="absolute inset-0 z-0" style={{ y: y3d }}>
         <HeroScene />
+        <InteractiveDataViz className="opacity-60 mix-blend-screen" />
       </motion.div>
       <motion.div
         className="relative z-10 container mx-auto px-6 text-center max-w-4xl select-none pointer-events-none"
@@ -52,19 +54,19 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.9, type: 'spring', stiffness: 100, damping: 20 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center pointer-events-auto"
+          className="relative z-20 flex flex-col sm:flex-row gap-4 justify-center pointer-events-auto"
         >
           <MagneticButton
             href="https://t.me/"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-4 rounded-lg bg-primary text-primary-foreground font-medium text-base hover:opacity-90 transition-opacity glow-soft"
+            className="inline-block px-8 py-4 rounded-lg bg-primary text-primary-foreground font-medium text-base hover:opacity-90 transition-opacity glow-soft cursor-pointer"
           >
             Message us on Telegram
           </MagneticButton>
           <MagneticButton
             href="#contact"
-            className="px-8 py-4 rounded-lg bg-secondary text-secondary-foreground font-medium text-base hover:bg-muted transition-colors border border-border"
+            className="inline-block px-8 py-4 rounded-lg bg-secondary text-secondary-foreground font-medium text-base hover:bg-muted transition-colors border border-border cursor-pointer"
           >
             Book a Strategy Call
           </MagneticButton>
