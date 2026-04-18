@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import HeroScene from './HeroScene';
+import InteractiveDataViz from './InteractiveDataViz';
 import MagneticButton from './MagneticButton';
 
 export default function HeroSection() {
@@ -17,6 +18,7 @@ export default function HeroSection() {
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <motion.div className="absolute inset-0 z-0" style={{ y: y3d }}>
         <HeroScene />
+        <InteractiveDataViz className="opacity-60 mix-blend-screen" />
       </motion.div>
       <motion.div
         className="relative z-10 container mx-auto px-6 text-center max-w-4xl select-none pointer-events-none"
